@@ -168,12 +168,22 @@ export const EXPERTISE: Expertise[] = [
       ar: "أنظمة جودة المختبرات",
     },
     body: {
-      en: "Trained in the evaluation and standardisation of agricultural laboratories to ISO/IEC 17025, and in experimental design and biostatistics for research programmes.",
-      ar: "تدريب على تقييم وتوحيد المختبرات الزراعية وفق مواصفة ISO/IEC 17025، وعلى تصميم التجارب والإحصاء الحيوي للبرامج البحثية.",
+      en: "Trained in the evaluation and standardisation of agricultural laboratories against ISO/IEC 17025 (AOAD, 2016), and in experimental design and biostatistics — applied to how the Section's operating procedures and studies are written and run.",
+      ar: "تدريب على تقييم وتوحيد المختبرات الزراعية وفق مواصفة ISO/IEC 17025 (المنظمة العربية للتنمية الزراعية، ٢٠١٦)، وعلى تصميم التجارب والإحصاء الحيوي — يُطبَّق في كتابة وتنفيذ إجراءات القسم ودراساته.",
     },
     tags: {
-      en: ["ISO/IEC 17025", "Experimental design", "Biostatistics", "SOPs"],
-      ar: ["ISO/IEC 17025", "تصميم التجارب", "الإحصاء الحيوي", "إجراءات التشغيل"],
+      en: [
+        "ISO/IEC 17025 training",
+        "Experimental design",
+        "Biostatistics",
+        "SOPs",
+      ],
+      ar: [
+        "تدريب ISO/IEC 17025",
+        "تصميم التجارب",
+        "الإحصاء الحيوي",
+        "إجراءات التشغيل",
+      ],
     },
   },
   {
@@ -712,7 +722,10 @@ export const LANGUAGES: { name: Bi; level: Bi; pct: number }[] = [
   },
   {
     name: { en: "Russian", ar: "الروسية" },
-    level: { en: "Professional — studied and graduated in Russia", ar: "مستوى مهني — الدراسة والتخرج في روسيا" },
+    level: {
+      en: "Professional — MSc studied and defended in Russian",
+      ar: "مستوى مهني — درست الماجستير وناقشته بالروسية",
+    },
     pct: 82,
   },
 ];
