@@ -19,7 +19,7 @@ export default function Projects() {
     >
       <ol className="border-t border-ink">
         {PROJECTS.map((p, i) => {
-          const plate = p.shot && (
+          const plate = (
             <div className="plate overflow-hidden">
               <Image
                 src={p.shot}
@@ -58,7 +58,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className={p.shot ? "md:col-span-5" : "md:col-span-8"}>
+              <div className="md:col-span-5">
                 <p className="text-[0.94rem] leading-[1.72] text-muted text-pretty">
                   {t(p.body)}
                 </p>
@@ -93,22 +93,20 @@ export default function Projects() {
                 )}
               </div>
 
-              {plate && (
-                <figure className="md:col-span-4">
-                  {p.live ? (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block transition-opacity hover:opacity-90"
-                    >
-                      {plate}
-                    </a>
-                  ) : (
-                    plate
-                  )}
-                </figure>
-              )}
+              <figure className="md:col-span-4">
+                {p.live ? (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-opacity hover:opacity-90"
+                  >
+                    {plate}
+                  </a>
+                ) : (
+                  plate
+                )}
+              </figure>
             </Reveal>
           );
         })}

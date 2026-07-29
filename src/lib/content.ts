@@ -628,8 +628,11 @@ export type Project = {
   live?: string;
   repo?: string;
   featured?: boolean;
-  /** Interface screenshot, 1440×900, in /public/images/projects. */
-  shot?: string;
+  /**
+   * Interface screenshot, 1440×900, in /public/images/projects. Required:
+   * a project with nothing to show is not finished enough to list.
+   */
+  shot: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -671,15 +674,6 @@ export const PROJECTS: Project[] = [
     shot: "/images/projects/omani-agr.webp",
   },
   {
-    name: { en: "Claude · Codex · Gemini Workspace", ar: "مساحة عمل Claude · Codex · Gemini" },
-    body: {
-      en: "A unified desktop workspace that orchestrates three AI coding agents — Claude plans, Codex implements, Gemini researches — with quota-aware routing, MCP connectors and a standalone Electron build.",
-      ar: "مساحة عمل مكتبية موحّدة تنسّق بين ثلاثة وكلاء برمجة بالذكاء الاصطناعي — Claude يخطط، وCodex ينفّذ، وGemini يبحث — مع توجيه يراعي حصص الاستخدام وموصلات MCP وتطبيق Electron مستقل.",
-    },
-    stack: ["TypeScript", "Electron", "Node.js", "MCP"],
-    repo: "https://github.com/YasirObaid5/claude-codex",
-  },
-  {
     name: { en: "Laws of Language", ar: "قوانين اللغة" },
     body: {
       en: "An explanatory reference on the quantitative regularities of natural language — Zipf, Heaps and related power laws — connecting information theory, statistical physics and corpus linguistics.",
@@ -691,15 +685,6 @@ export const PROJECTS: Project[] = [
     shot: "/images/projects/laws.webp",
   },
   {
-    name: { en: "ChatGPT MCP Server", ar: "خادم ChatGPT عبر بروتوكول MCP" },
-    body: {
-      en: "A Model Context Protocol server that lets Claude Desktop call OpenAI models as tools — with conversation-context management, reasoning-model routing and configurable generation parameters.",
-      ar: "خادم يعتمد بروتوكول MCP يتيح لتطبيق Claude استدعاء نماذج OpenAI كأدوات — مع إدارة سياق المحادثة وتوجيه نماذج الاستدلال وضبط معاملات التوليد.",
-    },
-    stack: ["Node.js", "MCP", "OpenAI API"],
-    repo: "https://github.com/YasirObaid5/ChatGPT-MCP",
-  },
-  {
     name: { en: "PMP Preparation Platform", ar: "منصة الإعداد لشهادة PMP" },
     body: {
       en: "A study platform for the Project Management Professional certification — structured knowledge areas, process groups and practice material.",
@@ -709,15 +694,6 @@ export const PROJECTS: Project[] = [
     live: "https://new-pmp.vercel.app",
     repo: "https://github.com/YasirObaid5/newPMP",
     shot: "/images/projects/pmp.webp",
-  },
-  {
-    name: { en: "Oman Agriculture", ar: "الزراعة العُمانية" },
-    body: {
-      en: "An informational web application on Oman's agricultural sector, produced as an extension and awareness resource.",
-      ar: "تطبيق ويب معلوماتي عن القطاع الزراعي في سلطنة عُمان، أُنتج كمصدر إرشادي وتوعوي.",
-    },
-    stack: ["React", "JavaScript"],
-    repo: "https://github.com/YasirObaid5/oman-agriculture",
   },
 ];
 
