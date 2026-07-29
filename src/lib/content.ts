@@ -632,6 +632,18 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    name: {
+      en: "Murabbi — Herd & Research Data Platform",
+      ar: "مُربّي — منصة بيانات القطيع والبحوث",
+    },
+    body: {
+      en: "An Arabic-first herd management system for animal production research centres and field stations. An event-sourced animal timeline derives each animal's reproductive state from its recorded history, alongside milk and weight recording, nutrition stock and requirement planning, breeding and selection records, station scoping, user roles, and CSV and PDF reporting. Written by the person who runs the programme it records — the domain requirements and the data model are the same work.",
+      ar: "نظام لإدارة القطيع يضع العربية أولاً، موجّه لمراكز بحوث الإنتاج الحيواني والمحطات الميدانية. يبني سجلاً زمنياً لأحداث كل حيوان تُشتقّ منه حالته التناسلية، إلى جانب تسجيل الحليب والأوزان، وتخطيط مخزون التغذية والاحتياجات، وسجلات التربية والانتخاب، ونطاقات المحطات، وأدوار المستخدمين، والتقارير بصيغتَي CSV وPDF. كُتب بيد من يُدير البرنامج الذي يوثّقه — فمتطلبات المجال ونموذج البيانات عمل واحد.",
+    },
+    stack: ["Python", "PostgreSQL", "Event sourcing", "Bilingual RTL"],
+    featured: true,
+  },
+  {
     name: { en: "YΦ Studio — Unified Math Workspace", ar: "YΦ Studio — بيئة رياضية موحّدة" },
     body: {
       en: "A single workspace that joins a spreadsheet to a mathematics engine and a visualisation lab. Tabular data feeds statistics, matrices, a solver and sensitivity analysis; results bind straight to 2D and 3D plotting — function surfaces, parametric and implicit curves, polar plots, vector fields and contour projections rendered in WebGL. Built because analysis, computation and graphing normally live in three separate tools.",
@@ -639,7 +651,6 @@ export const PROJECTS: Project[] = [
     },
     stack: ["TypeScript", "WebGL", "Desktop app", "Cloud sync"],
     live: "https://yphi-studio.vercel.app",
-    featured: true,
   },
   {
     name: {
@@ -653,7 +664,6 @@ export const PROJECTS: Project[] = [
     stack: ["React", "React Router", "Bilingual RTL", "Responsive"],
     live: "https://omani-animal-genetic-resources.vercel.app",
     repo: "https://github.com/YasirObaid5/Omani-Animal-Genetic-Resources",
-    featured: true,
   },
   {
     name: { en: "Claude · Codex · Gemini Workspace", ar: "مساحة عمل Claude · Codex · Gemini" },
@@ -663,7 +673,6 @@ export const PROJECTS: Project[] = [
     },
     stack: ["TypeScript", "Electron", "Node.js", "MCP"],
     repo: "https://github.com/YasirObaid5/claude-codex",
-    featured: true,
   },
   {
     name: { en: "Laws of Language", ar: "قوانين اللغة" },

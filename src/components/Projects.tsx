@@ -48,28 +48,31 @@ export default function Projects() {
                 {p.stack.join(" · ")}
               </p>
 
-              <p className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
-                {p.live && (
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="label border-b border-rule-firm pb-0.5 text-ink transition hover:border-pine hover:text-pine"
-                  >
-                    {ui("projectLive")} →
-                  </a>
-                )}
-                {p.repo && (
-                  <a
-                    href={p.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="label border-b border-transparent pb-0.5 transition hover:border-rule-firm hover:text-ink"
-                  >
-                    {ui("projectCode")}
-                  </a>
-                )}
-              </p>
+              {/* Internal systems carry neither link; skip the row entirely. */}
+              {(p.live || p.repo) && (
+                <p className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  {p.live && (
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="label border-b border-rule-firm pb-0.5 text-ink transition hover:border-pine hover:text-pine"
+                    >
+                      {ui("projectLive")} →
+                    </a>
+                  )}
+                  {p.repo && (
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="label border-b border-transparent pb-0.5 transition hover:border-rule-firm hover:text-ink"
+                    >
+                      {ui("projectCode")}
+                    </a>
+                  )}
+                </p>
+              )}
             </div>
           </Reveal>
         ))}
