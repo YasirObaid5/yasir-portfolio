@@ -193,8 +193,14 @@ html[dir="rtl"] .label {
   text-wrap: pretty;
 }
 
-/* Reveal — a short, restrained lift. Nothing bounces. */
-.reveal {
+/*
+ * Reveal — a short, restrained lift. Nothing bounces.
+ *
+ * Scoped to `html.js`, which the boot script sets. Without scripting the
+ * content is simply visible: the page must never depend on JavaScript to
+ * show its own text.
+ */
+.js .reveal {
   opacity: 0;
   transform: translateY(12px);
   transition:
@@ -202,13 +208,13 @@ html[dir="rtl"] .label {
     transform 0.55s var(--ease-editorial);
 }
 
-.reveal.is-in {
+.js .reveal.is-in {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .js .reveal {
     opacity: 1;
     transform: none;
   }
