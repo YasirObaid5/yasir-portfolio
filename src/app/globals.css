@@ -227,124 +227,165 @@ html[dir="rtl"] .label {
 /* reading distance it is too strong — nudge these down, not up.       */
 /* ------------------------------------------------------------------ */
 
-.arabesque {
-  opacity: 0.11;
-}
-
-:root[data-theme="dark"] .arabesque {
-  opacity: 0.14;
+/* The fixed sheet the whole page is drawn on. */
+.arabesque-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 /*
- * Each field is pinned to one corner and falls away on the diagonal: clearly
- * drawn where it starts, gone well before it reaches the opposite side. The
- * `--ax`/`--ay` pair is the anchor; the RTL rules mirror it horizontally so
- * the ornament still sits on the outer edge when the page flips.
+ * Base layer: present everywhere, heaviest at the top-start corner. The
+ * diagonal falloff is what stops the lattice reading as wallpaper.
+ */
+.arabesque-base {
+  position: absolute;
+  color: var(--c-pine);
+  opacity: 0.15;
+  -webkit-mask-image: linear-gradient(
+    to bottom right,
+    #000 0%,
+    rgb(0 0 0 / 0.62) 42%,
+    rgb(0 0 0 / 0.34) 74%,
+    rgb(0 0 0 / 0.26) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom right,
+    #000 0%,
+    rgb(0 0 0 / 0.62) 42%,
+    rgb(0 0 0 / 0.34) 74%,
+    rgb(0 0 0 / 0.26) 100%
+  );
+}
+
+html[dir="rtl"] .arabesque-base {
+  -webkit-mask-image: linear-gradient(
+    to bottom left,
+    #000 0%,
+    rgb(0 0 0 / 0.62) 42%,
+    rgb(0 0 0 / 0.34) 74%,
+    rgb(0 0 0 / 0.26) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom left,
+    #000 0%,
+    rgb(0 0 0 / 0.62) 42%,
+    rgb(0 0 0 / 0.34) 74%,
+    rgb(0 0 0 / 0.26) 100%
+  );
+}
+
+/*
+ * Wave layer: a soft diagonal band of extra strength travelling top-start to
+ * bottom-end. The band is wide and its edges are long, so at any instant it
+ * reads as an uneven brightness across the field rather than as a stripe.
  */
 /*
- * Two mask layers, intersected.
+ * The crests repeat every 1800px measured along the 135° axis. Shifting the
+ * mask by 1273px on both axes advances it by exactly one period
+ * (1800 / √2 ≈ 1273), so the loop closes seamlessly at any viewport size —
+ * which percentage-based positions cannot guarantee, since their travel
+ * depends on the box.
  *
- *   1. the corner falloff — fixed, and what gives each field its anchor;
- *   2. a soft region that drifts very slowly across the field.
- *
- * Layer 2 never reaches zero (it bottoms out around 0.45), so the ornament
- * brightens and recedes rather than switching on and off. At ~50 seconds a
- * cycle the movement is below the threshold that pulls the eye — you notice
- * the page feels alive without ever catching it moving.
+ * The mask is oversized by 2600px and never repeats, so the box stays covered
+ * for the whole shift and no tile seam can appear.
  */
-.arabesque-corner {
-  --ax: 0%;
-  --ay: 0%;
-  --corner: radial-gradient(
-    125% 125% at var(--ax) var(--ay),
-    #000 0%,
-    rgb(0 0 0 / 0.62) 26%,
-    rgb(0 0 0 / 0.22) 50%,
-    transparent 74%
-  );
-  --drift: radial-gradient(
-    circle,
-    #000 0%,
-    rgb(0 0 0 / 0.74) 34%,
-    rgb(0 0 0 / 0.46) 62%,
-    rgb(0 0 0 / 0.46) 100%
-  );
+.arabesque-wave {
+  position: absolute;
+  color: var(--c-pine);
+  opacity: 0.26;
+  -webkit-mask-image: var(--wave);
+  mask-image: var(--wave);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: calc(100% + 2600px) calc(100% + 2600px);
+  mask-size: calc(100% + 2600px) calc(100% + 2600px);
+  animation: arabesque-wave 26s linear infinite;
+  will-change: mask-position;
 
-  -webkit-mask-image: var(--corner), var(--drift);
-  mask-image: var(--corner), var(--drift);
-  -webkit-mask-repeat: no-repeat, no-repeat;
-  mask-repeat: no-repeat, no-repeat;
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-
-  animation: arabesque-breathe 52s ease-in-out infinite;
+  --wave: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    rgb(0 0 0 / 0.14) 170px,
+    rgb(0 0 0 / 0.55) 330px,
+    #000 520px,
+    rgb(0 0 0 / 0.55) 710px,
+    rgb(0 0 0 / 0.14) 870px,
+    transparent 1040px,
+    transparent 1800px
+  );
 }
 
-@keyframes arabesque-breathe {
-  0% {
-    -webkit-mask-size: 100% 100%, 170% 170%;
-    mask-size: 100% 100%, 170% 170%;
-    -webkit-mask-position: 0% 0%, 8% 12%;
-    mask-position: 0% 0%, 8% 12%;
+html[dir="rtl"] .arabesque-wave {
+  --wave: repeating-linear-gradient(
+    225deg,
+    transparent 0px,
+    rgb(0 0 0 / 0.14) 170px,
+    rgb(0 0 0 / 0.55) 330px,
+    #000 520px,
+    rgb(0 0 0 / 0.55) 710px,
+    rgb(0 0 0 / 0.14) 870px,
+    transparent 1040px,
+    transparent 1800px
+  );
+  animation-name: arabesque-wave-rtl;
+}
+
+/* Top-start corner to bottom-end corner. */
+@keyframes arabesque-wave {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
   }
-  50% {
-    -webkit-mask-size: 100% 100%, 210% 210%;
-    mask-size: 100% 100%, 210% 210%;
-    -webkit-mask-position: 0% 0%, 92% 74%;
-    mask-position: 0% 0%, 92% 74%;
-  }
-  100% {
-    -webkit-mask-size: 100% 100%, 170% 170%;
-    mask-size: 100% 100%, 170% 170%;
-    -webkit-mask-position: 0% 0%, 8% 12%;
-    mask-position: 0% 0%, 8% 12%;
+  to {
+    -webkit-mask-position: 1273px 1273px;
+    mask-position: 1273px 1273px;
   }
 }
 
-/* Fields on the same page must not breathe in lockstep. */
-.arabesque-phase-b {
-  animation-duration: 67s;
-  animation-delay: -24s;
+@keyframes arabesque-wave-rtl {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: -1273px 1273px;
+    mask-position: -1273px 1273px;
+  }
+}
+
+.arabesque-subtle .arabesque-base {
+  opacity: 0.09;
+}
+
+.arabesque-subtle .arabesque-wave {
+  opacity: 0.16;
+}
+
+/* Sage on near-black carries further than pine on paper, so dark runs lower. */
+:root[data-theme="dark"] .arabesque-base {
+  opacity: 0.13;
+}
+
+:root[data-theme="dark"] .arabesque-wave {
+  opacity: 0.24;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .arabesque-corner {
-    animation: none;
-    -webkit-mask-size: 100% 100%, 190% 190%;
-    mask-size: 100% 100%, 190% 190%;
-    -webkit-mask-position: 0% 0%, 50% 40%;
-    mask-position: 0% 0%, 50% 40%;
+  .arabesque-wave {
+    display: none;
+  }
+  .arabesque-base {
+    opacity: 0.18;
   }
 }
 
-.anchor-top-start {
-  --ax: 0%;
-  --ay: 0%;
-}
-.anchor-top-end {
-  --ax: 100%;
-  --ay: 0%;
-}
-.anchor-bottom-end {
-  --ax: 100%;
-  --ay: 100%;
-}
-.anchor-bottom-start {
-  --ax: 0%;
-  --ay: 100%;
-}
-
-html[dir="rtl"] .anchor-top-start {
-  --ax: 100%;
-}
-html[dir="rtl"] .anchor-top-end {
-  --ax: 0%;
-}
-html[dir="rtl"] .anchor-bottom-end {
-  --ax: 0%;
-}
-html[dir="rtl"] .anchor-bottom-start {
-  --ax: 100%;
+@media print {
+  .arabesque-backdrop {
+    display: none;
+  }
 }
 
 /* A fleuron sitting on a rule needs the rule to stop behind it. */
@@ -354,12 +395,6 @@ html[dir="rtl"] .anchor-bottom-start {
   translate: 0 -50%;
   background: var(--c-paper);
   padding-inline: 0.6rem;
-}
-
-@media print {
-  .arabesque {
-    display: none;
-  }
 }
 
 /* ------------------------------------------------------------------ */

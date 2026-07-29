@@ -5,19 +5,12 @@ import Link from "next/link";
 import { CONTACT, PROFILE, STATS } from "@/lib/content";
 import { useLang } from "@/lib/i18n";
 import Reveal from "./Reveal";
-import { ArabesqueField } from "./Arabesque";
 
 export default function Hero() {
   const { t, ui } = useLang();
 
   return (
-    <section className="relative isolate overflow-hidden pt-24 md:pt-32">
-      <ArabesqueField
-        id="arabesque-hero"
-        motif="khatim"
-        className="arabesque arabesque-corner anchor-top-start inset-x-0 top-0 -z-10 h-[52rem]"
-      />
-
+    <section className="pt-24 md:pt-32">
       <div className="measure">
         {/* masthead rule ------------------------------------------------ */}
         <Reveal>

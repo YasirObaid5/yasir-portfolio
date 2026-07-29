@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import ArabesqueBackdrop from "@/components/ArabesqueBackdrop";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Expertise from "@/components/Expertise";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <span id="top" />
+      <ArabesqueBackdrop motif="khatim" />
       <Nav />
       <main id="main">
         <Hero />

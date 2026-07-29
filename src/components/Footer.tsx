@@ -3,20 +3,13 @@
 import Link from "next/link";
 import { CONTACT, PROFILE } from "@/lib/content";
 import { useLang } from "@/lib/i18n";
-import { ArabesqueField } from "./Arabesque";
 
 export default function Footer() {
   const { t, ui } = useLang();
   const year = 2026;
 
   return (
-    <footer className="relative isolate overflow-hidden border-t border-ink py-12">
-      <ArabesqueField
-        id="arabesque-footer"
-        motif="rosette12"
-        className="arabesque arabesque-corner arabesque-phase-b anchor-bottom-end inset-0 -z-10"
-      />
-
+    <footer className="border-t border-ink py-12">
       <div className="measure">
         <div className="grid gap-x-12 gap-y-8 md:grid-cols-12">
           <div className="md:col-span-6 lg:col-span-5">

@@ -13,7 +13,8 @@ import {
   PUBLICATIONS,
 } from "@/lib/content";
 import { useLang } from "@/lib/i18n";
-import { ArabesqueField, StarMark } from "./Arabesque";
+import { StarMark } from "./Arabesque";
+import ArabesqueBackdrop from "./ArabesqueBackdrop";
 import { IconChevronLeft, IconPrint } from "./Icons";
 import { LangToggle, ThemeToggle } from "./Toggles";
 
@@ -29,12 +30,8 @@ export default function CvDocument() {
   const { t, tl, ui, lang } = useLang();
 
   return (
-    <div className="relative isolate min-h-screen overflow-hidden">
-      <ArabesqueField
-        id="arabesque-cv"
-        motif="octagon"
-        className="arabesque arabesque-corner anchor-top-end inset-x-0 top-0 -z-10 h-[44rem]"
-      />
+    <div className="min-h-screen">
+      <ArabesqueBackdrop motif="octagon" subtle />
 
       {/* toolbar — never printed ------------------------------------- */}
       <div className="no-print sticky top-0 z-50 border-b border-rule bg-paper">
