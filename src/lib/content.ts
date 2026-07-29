@@ -628,6 +628,8 @@ export type Project = {
   live?: string;
   repo?: string;
   featured?: boolean;
+  /** Interface screenshot, 1440×900, in /public/images/projects. */
+  shot?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -641,6 +643,7 @@ export const PROJECTS: Project[] = [
       ar: "نظام لإدارة القطيع يضع العربية أولاً، موجّه لمراكز بحوث الإنتاج الحيواني والمحطات الميدانية. يبني سجلاً زمنياً لأحداث كل حيوان تُشتقّ منه حالته التناسلية، إلى جانب تسجيل الحليب والأوزان، وتخطيط مخزون التغذية والاحتياجات، وسجلات التربية والانتخاب، ونطاقات المحطات، وأدوار المستخدمين، والتقارير بصيغتَي CSV وPDF. كُتب بيد من يُدير البرنامج الذي يوثّقه — فمتطلبات المجال ونموذج البيانات عمل واحد.",
     },
     stack: ["Python", "PostgreSQL", "Event sourcing", "Bilingual RTL"],
+    shot: "/images/projects/murabbi.webp",
     featured: true,
   },
   {
@@ -651,6 +654,7 @@ export const PROJECTS: Project[] = [
     },
     stack: ["TypeScript", "WebGL", "Desktop app", "Cloud sync"],
     live: "https://yphi-studio.vercel.app",
+    shot: "/images/projects/yphi-studio.webp",
   },
   {
     name: {
@@ -664,6 +668,7 @@ export const PROJECTS: Project[] = [
     stack: ["React", "React Router", "Bilingual RTL", "Responsive"],
     live: "https://omani-animal-genetic-resources.vercel.app",
     repo: "https://github.com/YasirObaid5/Omani-Animal-Genetic-Resources",
+    shot: "/images/projects/omani-agr.webp",
   },
   {
     name: { en: "Claude · Codex · Gemini Workspace", ar: "مساحة عمل Claude · Codex · Gemini" },
@@ -683,6 +688,7 @@ export const PROJECTS: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "Data viz"],
     live: "https://laws-of-language.vercel.app",
     repo: "https://github.com/YasirObaid5/Laws-of-Language",
+    shot: "/images/projects/laws.webp",
   },
   {
     name: { en: "ChatGPT MCP Server", ar: "خادم ChatGPT عبر بروتوكول MCP" },
@@ -702,6 +708,7 @@ export const PROJECTS: Project[] = [
     stack: ["React", "Vite"],
     live: "https://new-pmp.vercel.app",
     repo: "https://github.com/YasirObaid5/newPMP",
+    shot: "/images/projects/pmp.webp",
   },
   {
     name: { en: "Oman Agriculture", ar: "الزراعة العُمانية" },
