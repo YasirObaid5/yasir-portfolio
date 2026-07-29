@@ -190,12 +190,12 @@ export const EXPERTISE: Expertise[] = [
     icon: "code",
     title: { en: "Digital & AI Tooling", ar: "الأدوات الرقمية والذكاء الاصطناعي" },
     body: {
-      en: "Self-taught developer. I build the web platforms and AI agents my research and extension work need — from breed-documentation portals to Model Context Protocol servers.",
-      ar: "مطوّر بالتعلّم الذاتي. أبني منصات الويب ووكلاء الذكاء الاصطناعي التي يحتاجها عملي البحثي والإرشادي — من بوابات توثيق السلالات إلى خوادم بروتوكول MCP.",
+      en: "Self-taught developer. I build the web platforms my research and extension work need, from breed-documentation portals to data and study tools.",
+      ar: "مطوّر بالتعلّم الذاتي. أبني منصات الويب التي يحتاجها عملي البحثي والإرشادي، من بوابات توثيق السلالات إلى أدوات البيانات والدراسة.",
     },
     tags: {
-      en: ["React / Next.js", "TypeScript", "AI agents", "MCP"],
-      ar: ["React / Next.js", "TypeScript", "وكلاء الذكاء الاصطناعي", "MCP"],
+      en: ["React / Next.js", "JavaScript", "CSS"],
+      ar: ["React / Next.js", "JavaScript", "CSS"],
     },
   },
   {
