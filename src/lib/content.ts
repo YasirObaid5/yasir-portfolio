@@ -715,8 +715,8 @@ export const LANGUAGES: { name: Bi; level: Bi; pct: number }[] = [
   {
     name: { en: "Russian", ar: "الروسية" },
     level: {
-      en: "Professional — MSc studied and defended in Russian",
-      ar: "مستوى مهني — درست الماجستير وناقشته بالروسية",
+      en: "Professional — reading, writing, speaking",
+      ar: "مستوى مهني — قراءة وكتابة ومحادثة",
     },
     pct: 82,
   },
