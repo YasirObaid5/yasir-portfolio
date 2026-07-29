@@ -1,0 +1,25 @@
+{
+  "name": "yasir-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Professional portfolio of Yasir Obaid Thani Al-Shukaili — Livestock Reproduction Scientist, Sultanate of Oman.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.5.4",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.8.3"
+  }
+}

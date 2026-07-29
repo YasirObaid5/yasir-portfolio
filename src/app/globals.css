@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   Design tokens
+
+   The palette is deliberately narrow: warm paper, ink, and a single
+   pine green that appears only in structural roles — rules, section
+   numerals, small-caps labels and links. No gradients, no glows.
+   ================================================================== */
+
+@theme {
+  --font-sans: var(--f-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--f-display), Georgia, "Times New Roman", serif;
+  --font-arabic: var(--f-arabic), var(--f-sans), sans-serif;
+
+  --color-paper: var(--c-paper);
+  --color-panel: var(--c-panel);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+  --color-rule: var(--c-rule);
+  --color-rule-firm: var(--c-rule-firm);
+  --color-pine: var(--c-pine);
+  --color-pine-wash: var(--c-pine-wash);
+
+  --ease-editorial: cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+/* Light — the primary, intended reading experience. */
+:root {
+  color-scheme: light;
+
+  --c-paper: #f7f5f0;
+  --c-panel: #efece4;
+  --c-ink: #191a17;
+  --c-muted: #4f524b;
+  --c-faint: #83867c;
+  --c-rule: rgb(25 26 23 / 0.14);
+  --c-rule-firm: rgb(25 26 23 / 0.32);
+  --c-pine: #1d4a38;
+  --c-pine-wash: rgb(29 74 56 / 0.07);
+}
+
+/* Dark — the same document printed on dark stock. Still muted. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-paper: #161714;
+  --c-panel: #1e1f1b;
+  --c-ink: #eae8e0;
+  --c-muted: #a8a89e;
+  --c-faint: #7b7c73;
+  --c-rule: rgb(234 232 224 / 0.16);
+  --c-rule-firm: rgb(234 232 224 / 0.34);
+  --c-pine: #8fb3a0;
+  --c-pine-wash: rgb(143 179 160 / 0.1);
+}
+
+/* ------------------------------------------------------------------ */
+
+* {
+  border-color: var(--c-rule);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: var(--c-paper);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition:
+    background-color 0.35s var(--ease-editorial),
+    color 0.35s var(--ease-editorial);
+}
+
+html[dir="rtl"] body,
+html[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+}
+
+html[dir="rtl"] .font-display {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Latin display type is set tight; Arabic needs its own rhythm. */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+::selection {
+  background: var(--c-pine);
+  color: var(--c-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-pine);
+  outline-offset: 3px;
+}
+
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-rule-firm) transparent;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout                                                              */
+/* ------------------------------------------------------------------ */
+
+@utility measure {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 76rem;
+  padding-inline: 1.5rem;
+  @media (min-width: 768px) {
+    padding-inline: 3rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 4.5rem;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Editorial primitives                                                */
+/* ------------------------------------------------------------------ */
+
+/* Small-caps label — the workhorse of the whole system. */
+.label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-faint);
+}
+
+html[dir="rtl"] .label {
+  letter-spacing: 0;
+  font-size: 0.76rem;
+}
+
+/* Slab numeral used to index sections, in the manner of a contents page. */
+.numeral {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Links inside prose: pine, underlined on the baseline. */
+.link {
+  color: var(--c-pine);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(in srgb, var(--c-pine) 40%, transparent);
+  transition: text-decoration-color 0.2s;
+}
+
+.link:hover {
+  text-decoration-color: var(--c-pine);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Reveal — a short, restrained lift. Nothing bounces. */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.55s var(--ease-editorial),
+    transform 0.55s var(--ease-editorial);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Portrait treatment: a plain frame and a caption, as in a monograph. */
+.plate {
+  background: var(--c-panel);
+  border: 1px solid var(--c-rule);
+}
+
+/* ------------------------------------------------------------------ */
+/* Arabesque watermark                                                 */
+/*                                                                     */
+/* Kept at watermark strength. If it is legible as a pattern from      */
+/* reading distance it is too strong — nudge these down, not up.       */
+/* ------------------------------------------------------------------ */
+
+.arabesque {
+  opacity: 0.11;
+}
+
+:root[data-theme="dark"] .arabesque {
+  opacity: 0.14;
+}
+
+/*
+ * Each field is pinned to one corner and falls away on the diagonal: clearly
+ * drawn where it starts, gone well before it reaches the opposite side. The
+ * `--ax`/`--ay` pair is the anchor; the RTL rules mirror it horizontally so
+ * the ornament still sits on the outer edge when the page flips.
+ */
+/*
+ * Two mask layers, intersected.
+ *
+ *   1. the corner falloff — fixed, and what gives each field its anchor;
+ *   2. a soft region that drifts very slowly across the field.
+ *
+ * Layer 2 never reaches zero (it bottoms out around 0.45), so the ornament
+ * brightens and recedes rather than switching on and off. At ~50 seconds a
+ * cycle the movement is below the threshold that pulls the eye — you notice
+ * the page feels alive without ever catching it moving.
+ */
+.arabesque-corner {
+  --ax: 0%;
+  --ay: 0%;
+  --corner: radial-gradient(
+    125% 125% at var(--ax) var(--ay),
+    #000 0%,
+    rgb(0 0 0 / 0.62) 26%,
+    rgb(0 0 0 / 0.22) 50%,
+    transparent 74%
+  );
+  --drift: radial-gradient(
+    circle,
+    #000 0%,
+    rgb(0 0 0 / 0.74) 34%,
+    rgb(0 0 0 / 0.46) 62%,
+    rgb(0 0 0 / 0.46) 100%
+  );
+
+  -webkit-mask-image: var(--corner), var(--drift);
+  mask-image: var(--corner), var(--drift);
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+
+  animation: arabesque-breathe 52s ease-in-out infinite;
+}
+
+@keyframes arabesque-breathe {
+  0% {
+    -webkit-mask-size: 100% 100%, 170% 170%;
+    mask-size: 100% 100%, 170% 170%;
+    -webkit-mask-position: 0% 0%, 8% 12%;
+    mask-position: 0% 0%, 8% 12%;
+  }
+  50% {
+    -webkit-mask-size: 100% 100%, 210% 210%;
+    mask-size: 100% 100%, 210% 210%;
+    -webkit-mask-position: 0% 0%, 92% 74%;
+    mask-position: 0% 0%, 92% 74%;
+  }
+  100% {
+    -webkit-mask-size: 100% 100%, 170% 170%;
+    mask-size: 100% 100%, 170% 170%;
+    -webkit-mask-position: 0% 0%, 8% 12%;
+    mask-position: 0% 0%, 8% 12%;
+  }
+}
+
+/* Fields on the same page must not breathe in lockstep. */
+.arabesque-phase-b {
+  animation-duration: 67s;
+  animation-delay: -24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arabesque-corner {
+    animation: none;
+    -webkit-mask-size: 100% 100%, 190% 190%;
+    mask-size: 100% 100%, 190% 190%;
+    -webkit-mask-position: 0% 0%, 50% 40%;
+    mask-position: 0% 0%, 50% 40%;
+  }
+}
+
+.anchor-top-start {
+  --ax: 0%;
+  --ay: 0%;
+}
+.anchor-top-end {
+  --ax: 100%;
+  --ay: 0%;
+}
+.anchor-bottom-end {
+  --ax: 100%;
+  --ay: 100%;
+}
+.anchor-bottom-start {
+  --ax: 0%;
+  --ay: 100%;
+}
+
+html[dir="rtl"] .anchor-top-start {
+  --ax: 100%;
+}
+html[dir="rtl"] .anchor-top-end {
+  --ax: 0%;
+}
+html[dir="rtl"] .anchor-bottom-end {
+  --ax: 0%;
+}
+html[dir="rtl"] .anchor-bottom-start {
+  --ax: 100%;
+}
+
+/* A fleuron sitting on a rule needs the rule to stop behind it. */
+.fleuron {
+  position: absolute;
+  top: 0;
+  translate: 0 -50%;
+  background: var(--c-paper);
+  padding-inline: 0.6rem;
+}
+
+@media print {
+  .arabesque {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Print — /cv is the printable document                               */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  :root,
+  :root[data-theme="dark"] {
+    color-scheme: light;
+    --c-paper: #ffffff;
+    --c-panel: #ffffff;
+    --c-ink: #000000;
+    --c-muted: #262626;
+    --c-faint: #4a4a4a;
+    --c-rule: #c8c8c8;
+    --c-rule-firm: #8a8a8a;
+    --c-pine: #14392b;
+    --c-pine-wash: #f0f3f1;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 16mm 17mm;
+  }
+}
