@@ -196,11 +196,11 @@ html[dir="rtl"] .label {
 /*
  * Reveal — a short, restrained lift. Nothing bounces.
  *
- * Scoped to `html.js`, which the boot script sets. Without scripting the
- * content is simply visible: the page must never depend on JavaScript to
- * show its own text.
+ * These classes are applied by <Reveal> only after mount, and only to
+ * elements that start below the fold, so the page never paints blank and
+ * never depends on JavaScript to show its own text.
  */
-.js .reveal {
+.reveal {
   opacity: 0;
   transform: translateY(12px);
   transition:
@@ -208,13 +208,13 @@ html[dir="rtl"] .label {
     transform 0.55s var(--ease-editorial);
 }
 
-.js .reveal.is-in {
+.reveal.is-in {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .reveal {
+  .reveal {
     opacity: 1;
     transform: none;
   }

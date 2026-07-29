@@ -104,15 +104,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/**
- * Applies the stored theme and language before first paint, and marks the
- * document as scripted so the reveal animation can hide content. Without
- * this class nothing is hidden, so a failed or blocked bundle leaves a
- * readable page rather than a blank one.
- */
+/** Applies the stored theme and language before first paint. */
 const bootScript = `
 (function(){
-  document.documentElement.classList.add('js');
   try {
     var t = localStorage.getItem('yas-theme');
     if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
