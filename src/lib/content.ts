@@ -687,13 +687,13 @@ export const PROJECTS: Project[] = [
   {
     name: { en: "PMP Preparation Platform", ar: "منصة الإعداد لشهادة PMP" },
     body: {
-      en: "A study platform for the Project Management Professional certification — structured knowledge areas, process groups and practice material.",
-      ar: "منصة دراسية لشهادة احتراف إدارة المشاريع (PMP) — مجالات المعرفة ومجموعات العمليات ومواد التدريب بشكل منظم.",
+      en: "A study manual for the seventh-edition PMP exam — the principles, the three performance domains with the weight each carries in the examination, the predictive process grid and agile practice, with progress tracked through every section.",
+      ar: "دليل دراسي لامتحان PMP وفق الإصدار السابع — المبادئ، ومجالات الأداء الثلاثة بأوزانها في الامتحان، وشبكة العمليات التنبؤية والممارسات الرشيقة، مع تتبّع التقدّم في كل قسم.",
     },
     stack: ["React", "Vite"],
     live: "https://new-pmp.vercel.app",
     repo: "https://github.com/YasirObaid5/newPMP",
-    shot: "/images/projects/pmp.webp",
+    shot: "/images/projects/pmp-manual.webp",
   },
 ];
 
