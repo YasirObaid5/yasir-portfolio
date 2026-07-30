@@ -173,6 +173,8 @@ export const UI = {
   cvDobValue: { en: "10 August 1975", ar: "١٠ أغسطس ١٩٧٥" },
   cvNationality: { en: "Nationality", ar: "الجنسية" },
   cvNationalityValue: { en: "Omani", ar: "عُماني" },
+  cvWebsite: { en: "Website", ar: "الموقع الشخصي" },
+  cvScan: { en: "Portfolio", ar: "الملف الكامل" },
 
   footerRights: { en: "All rights reserved.", ar: "جميع الحقوق محفوظة." },
   footerBuilt: {

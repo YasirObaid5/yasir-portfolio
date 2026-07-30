@@ -93,13 +93,32 @@ export default function CvDocument() {
             </p>
           </div>
 
-          <Image
-            src="/images/avatar.png"
-            alt={t(PROFILE.name)}
-            width={400}
-            height={400}
-            className="plate size-24 shrink-0 object-cover object-top print:size-[20mm]"
-          />
+          <div className="flex shrink-0 items-end gap-4 print:gap-3">
+            <Image
+              src="/images/avatar.png"
+              alt={t(PROFILE.name)}
+              width={400}
+              height={400}
+              className="plate size-24 shrink-0 object-cover object-top print:size-[20mm]"
+            />
+
+            {/*
+              Print only. On screen the address above is a live link, so a code
+              to photograph would be pure decoration; on paper it is the only
+              way to reach the site without retyping the URL.
+            */}
+            <figure className="hidden shrink-0 print:block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/cv/portfolio-qr.svg"
+                alt="QR code linking to yasir-al-shukaili.vercel.app"
+                className="size-[18mm]"
+              />
+              <figcaption className="mt-[1mm] text-center text-[6pt] uppercase tracking-[0.12em] text-faint">
+                {ui("cvScan")}
+              </figcaption>
+            </figure>
+          </div>
         </header>
 
         {/* particulars */}
@@ -111,6 +130,7 @@ export default function CvDocument() {
             [ui("contactAddress"), t(CONTACT.address), false],
             [ui("cvDob"), ui("cvDobValue"), false],
             [ui("cvNationality"), ui("cvNationalityValue"), false],
+            [ui("cvWebsite"), "yasir-al-shukaili.vercel.app", true],
             ["LinkedIn", CONTACT.linkedin.replace("https://www.", ""), true],
             [
               "ResearchGate",
