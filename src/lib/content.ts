@@ -693,7 +693,7 @@ export const PROJECTS: Project[] = [
     stack: ["React", "Vite"],
     live: "https://new-pmp.vercel.app",
     repo: "https://github.com/YasirObaid5/newPMP",
-    shot: "/images/projects/pmp-manual.webp",
+    shot: "/images/projects/pmp-manual-2026.webp",
   },
 ];
 
