@@ -254,6 +254,28 @@ export const EXPERIENCE: Role[] = [
     },
   },
   {
+    period: { en: "2026 — Present", ar: "٢٠٢٦ — حتى الآن" },
+    title: {
+      en: "Co-Investigator — Encyclopedia of the Statistical Laws of the Arabic Language",
+      ar: "باحث مشارك — موسوعة القوانين الإحصائية للغة العربية",
+    },
+    org: {
+      en: "Research Grant (RG), Block Funding Program — Ministry of Higher Education, Research and Innovation · A'Sharqiyah University",
+      ar: "منحة بحثية (RG)، برنامج التمويل المؤسسي — وزارة التعليم العالي والبحث العلمي والابتكار · جامعة الشرقية",
+    },
+    current: true,
+    points: {
+      en: [
+        "Review general statistical laws of language and assess the evidence for their application to Arabic.",
+        "Contribute to the research team's systematic review and evidence synthesis for a national Arabic-language reference.",
+      ],
+      ar: [
+        "مراجعة القوانين الإحصائية العامة للغة وتقويم الأدلة على مدى انطباقها على اللغة العربية.",
+        "الإسهام في المراجعة المنهجية للأدبيات وتركيب الأدلة ضمن مرجع وطني باللغة العربية.",
+      ],
+    },
+  },
+  {
     period: { en: "2000 — 2006", ar: "٢٠٠٠ — ٢٠٠٦" },
     title: {
       en: "Animal Production Engineer — Rangeland Department",
