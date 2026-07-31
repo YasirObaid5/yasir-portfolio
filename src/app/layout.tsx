@@ -4,6 +4,7 @@ import {
   IBM_Plex_Sans_Arabic,
   IBM_Plex_Serif,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/lib/i18n";
 import { CONTACT, PROFILE } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
@@ -177,6 +178,12 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>{children}</LanguageProvider>
+        {/*
+          Vercel Web Analytics. Cookieless and without a device identifier, so
+          the page needs no consent banner — which matters here, since a
+          consent bar across the masthead would undo the design.
+        */}
+        <Analytics />
       </body>
     </html>
   );
