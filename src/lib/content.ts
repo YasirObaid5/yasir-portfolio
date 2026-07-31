@@ -682,7 +682,7 @@ export const PROJECTS: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "Data viz"],
     live: "https://laws-of-language.vercel.app",
     repo: "https://github.com/YasirObaid5/Laws-of-Language",
-    shot: "/images/projects/laws.webp",
+    shot: "/images/projects/laws-corpus-observatory.webp",
   },
   {
     name: { en: "PMP Preparation Platform", ar: "منصة الإعداد لشهادة PMP" },
