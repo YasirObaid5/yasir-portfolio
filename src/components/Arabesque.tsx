@@ -124,7 +124,12 @@ export function ArabesqueField({ id, motif, className = "" }: FieldProps) {
           height={size[1]}
           patternUnits="userSpaceOnUse"
         >
-          <g fill="none" stroke="currentColor" strokeWidth="1">
+          <g
+            className={motif === "khatim" ? "arabesque-turning-squares" : undefined}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+          >
             {paths.map((d, i) => (
               <path key={i} d={d} />
             ))}

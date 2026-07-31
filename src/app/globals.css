@@ -283,6 +283,17 @@ html[dir="rtl"] .arabesque-base {
   );
 }
 
+/* The two squares stay interlocked and turn as one eight-pointed star. */
+.arabesque-turning-squares path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: arabesque-square-turn 6s linear infinite;
+}
+
+@keyframes arabesque-square-turn {
+  to { transform: rotate(90deg); }
+}
+
 /*
  * Wave layer: a soft diagonal band of extra strength travelling top-start to
  * bottom-end. The band is wide and its edges are long, so at any instant it
@@ -385,6 +396,9 @@ html[dir="rtl"] .arabesque-wave {
   }
   .arabesque-base {
     opacity: 0.18;
+  }
+  .arabesque-turning-squares path {
+    animation: none;
   }
 }
 
