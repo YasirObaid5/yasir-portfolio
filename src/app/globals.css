@@ -294,6 +294,17 @@ html[dir="rtl"] .arabesque-base {
   to { transform: rotate(90deg); }
 }
 
+/* The fleuron turns through one symmetry step; its centre remains an anchor. */
+.star-mark-orbit {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: star-mark-turn 18s linear infinite;
+}
+
+@keyframes star-mark-turn {
+  to { transform: rotate(45deg); }
+}
+
 /*
  * Wave layer: a soft diagonal band of extra strength travelling top-start to
  * bottom-end. The band is wide and its edges are long, so at any instant it
@@ -398,6 +409,9 @@ html[dir="rtl"] .arabesque-wave {
     opacity: 0.18;
   }
   .arabesque-turning-squares path {
+    animation: none;
+  }
+  .star-mark-orbit {
     animation: none;
   }
 }

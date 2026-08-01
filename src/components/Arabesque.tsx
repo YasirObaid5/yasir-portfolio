@@ -156,9 +156,12 @@ export function StarMark({ className = "" }: { className?: string }) {
       stroke="currentColor"
       strokeWidth="1.2"
     >
-      {d.map((p, i) => (
-        <path key={i} d={p} />
-      ))}
+      <g className="star-mark-orbit">
+        {d.map((p, i) => (
+          <path key={i} d={p} />
+        ))}
+      </g>
+      <circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none" />
     </svg>
   );
 }

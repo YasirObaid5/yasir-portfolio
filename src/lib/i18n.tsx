@@ -142,8 +142,8 @@ export const UI = {
   projectsEyebrow: { en: "Digital work", ar: "الأعمال الرقمية" },
   projectsTitle: { en: "Selected projects", ar: "مشاريع مختارة" },
   projectsLead: {
-    en: "Software I have written myself — mostly to solve a problem in my own research, extension or study.",
-    ar: "برمجيات كتبتها بنفسي — معظمها لحل مشكلة واجهتني في البحث أو الإرشاد أو الدراسة.",
+    en: "Digital projects shaped by research, practical work and personal curiosity — from scientific tools to learning and creative experiments.",
+    ar: "مشاريع رقمية نمت من البحث والعمل والفضول الشخصي — من الأدوات العلمية إلى تجارب التعلّم والاستكشاف الإبداعي.",
   },
   projectLive: { en: "Live site", ar: "الموقع" },
   projectCode: { en: "Source", ar: "الشيفرة" },
