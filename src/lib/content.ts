@@ -683,6 +683,20 @@ export const PROJECTS: Project[] = [
   },
   {
     name: {
+      en: "YDˣ Studio — Arabic Document Editor",
+      ar: "YDˣ Studio — محرّر المستندات العربي",
+    },
+    body: {
+      en: "A document editor built Arabic-first, running entirely in the browser with no account and no upload. It edits DOCX and opens PDF, with tables, comments, tracked changes and a full right-to-left ribbon. Files are held in the browser's own storage and never leave the device — privacy by construction rather than by policy.",
+      ar: "محرّر مستندات مبني على العربية أولاً، يعمل بالكامل داخل المتصفح دون حساب ودون رفع. يحرّر ملفات DOCX ويفتح PDF، ويدعم الجداول والتعليقات وتتبّع التغييرات بشريط أدوات كامل من اليمين إلى اليسار. تُحفظ الملفات في مخزن المتصفح نفسه ولا تغادر الجهاز — خصوصية بحكم البناء لا بحكم سياسة الاستخدام.",
+    },
+    stack: ["Next.js", "SuperDoc", "IndexedDB", "Arabic RTL"],
+    live: "https://yasir-live-docs.vercel.app",
+    repo: "https://github.com/YasirObaid5/yasir_live_docs",
+    shot: "/images/projects/ydx-studio.webp",
+  },
+  {
+    name: {
       en: "Omani Animal Genetic Resources",
       ar: "الموارد الوراثية الحيوانية العُمانية",
     },
